@@ -16,23 +16,40 @@
 
 <body>
 
+    <!-- Start -->
+    <p>
+        <span>
+            <button type="button" onclick="start()">Click Me!</button>
+        </span>
+    </p>
 
-    <div>
+    <div id="form-operation">
         <form action="index.html">
             <span id="numberOne"></span>
-            <span>x</span>
+            <span id="sign-operation"></span>
             <span id="numberTwo"></span>
-            <span>=</span>
+            <span id="sign-result"></span>
             <span>
-                <input type="text" id="insertedInput" oninput="myFunction(event)">
+                <input type="text" id="insertedAnswer" oninput="myFunction(event)">
             </span>
             <span>
-                <input type="submit" value="Submit">
-            </span>
-            <span>
-                <button type="button" onclick="nextMultiplication()">Click Me!</button>
+                <input type="submit" id="submit-button" value="Submit">
             </span>
         </form>
+
+        <p>
+            <span id="answer"></span>
+        </p>
+        <p>
+            <span>
+                <button type="button" onclick="nextMultiplication()">Next</button>
+            </span>
+        </p>
+    </div>
+    <div>
+
+
+
         <!-- <span id="result"></span> -->
         <p>The inserted character:
             <span id="inserted"></span>
@@ -40,9 +57,6 @@
 
         <p>RESULT:
             <span id="result"></span>
-        </p>
-        <p>ANSWER:
-            <span id="answer"></span>
         </p>
         <p>INPUT FIELD:
             <span id="inputField"></span>
@@ -54,23 +68,25 @@
 
 
         // ini variables
-        let numberOne = Math.floor(Math.random() * 10);
+        /* let numberOne = Math.floor(Math.random() * 10);
         let numberTwo = Math.floor(Math.random() * 10);
-        let result = numberTwo * numberOne;
+        let result = numberTwo * numberOne; */
         let answer = '';
         let inputField = '';
 
-        document.getElementById("numberOne").innerHTML = numberOne;     // returns a random integer from 0 to 9
+        /* document.getElementById("numberOne").innerHTML = numberOne;
         document.getElementById("numberTwo").innerHTML = numberTwo;
         document.getElementById("result").innerHTML = result;
-        document.getElementById("answer").innerHTML = answer;    // returns a random integer from 0 to 9
+        document.getElementById("answer").innerHTML = answer; */
+
+        document.getElementById("form-operation").style.visibility = "hidden";
 
 
         function myFunction(event) {
             let answer = event.data;
             if (event.data == null) {
                 console.log(event.data);
-                inputField = document.getElementById("insertedInput").innerHTML;
+                inputField = document.getElementById("insertedAnswer").innerHTML;
                 document.getElementById("inputField").innerHTML = inputField;
             } else {
                 inputField = inputField + event.data;
@@ -91,13 +107,28 @@
         function nextMultiplication() {
             console.log('here');
             numberOne = Math.floor(Math.random() * 10);
+            document.getElementById("sign-operation").innerHTML = 'x';
             numberTwo = Math.floor(Math.random() * 10);
+            document.getElementById("sign-result").innerHTML = '=';
+
             result = numberTwo * numberOne;
+
             document.getElementById("numberOne").innerHTML = numberOne;     // returns a random integer from 0 to 9
             document.getElementById("numberTwo").innerHTML = numberTwo;
             document.getElementById("result").innerHTML = result;
         }
 
+
+        function start() {
+            /* let numberOne = Math.floor(Math.random() * 10);
+            let numberTwo = Math.floor(Math.random() * 10);
+            let result = numberTwo * numberOne;
+
+            document.getElementById("numberOne").innerHTML = numberOne;     // returns a random integer from 0 to 9
+            document.getElementById("numberTwo").innerHTML = numberTwo; */
+            document.getElementById("form-operation").style.visibility = "visible";
+            nextMultiplication();
+        }
 
     </script>
 
