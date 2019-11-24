@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <![endif]-->
+    <title>Page Title</title>
+    <style>
+        span {
+            padding: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <div>
+        <form action="index.html">
+            <span id="numberOne"></span>
+            <span>x</span>
+            <span id="numberTwo"></span>
+            <span>=</span>
+            <span>
+                <input type="text" id="insertedInput" oninput="myFunction(event)">
+            </span>
+            <span>
+                <input type="submit" value="Submit">
+            </span>
+            <span>
+                <button type="button" onclick="nextMultiplication()">Click Me!</button>
+            </span>
+        </form>
+        <!-- <span id="result"></span> -->
+        <p>The inserted character:
+            <span id="inserted"></span>
+        </p>
+
+        <p>RESULT:
+            <span id="result"></span>
+        </p>
+        <p>ANSWER:
+            <span id="answer"></span>
+        </p>
+        <p>INPUT FIELD:
+            <span id="inputField"></span>
+        </p>
+    </div>
+
+
+    <script>
+
+
+        // ini variables
+        let numberOne = Math.floor(Math.random() * 10);
+        let numberTwo = Math.floor(Math.random() * 10);
+        let result = numberTwo * numberOne;
+        let answer = '';
+        let inputField = '';
+
+        document.getElementById("numberOne").innerHTML = numberOne;     // returns a random integer from 0 to 9
+        document.getElementById("numberTwo").innerHTML = numberTwo;
+        document.getElementById("result").innerHTML = result;
+        document.getElementById("answer").innerHTML = answer;    // returns a random integer from 0 to 9
+
+
+        function myFunction(event) {
+            let answer = event.data;
+            if (event.data == null) {
+                console.log(event.data);
+                inputField = document.getElementById("insertedInput").innerHTML;
+                document.getElementById("inputField").innerHTML = inputField;
+            } else {
+                inputField = inputField + event.data;
+                document.getElementById("inputField").innerHTML = inputField;
+            }
+
+
+            document.getElementById("inserted").innerHTML = answer;
+            if (inputField == result) {
+                console.log(answer + ' - ' + result);
+                document.getElementById("answer").innerHTML = 'correct';
+            } else {
+                console.log(answer + ' - ' + result);
+                document.getElementById("answer").innerHTML = 'wrong';
+            }
+        }
+
+        function nextMultiplication() {
+            console.log('here');
+            numberOne = Math.floor(Math.random() * 10);
+            numberTwo = Math.floor(Math.random() * 10);
+            result = numberTwo * numberOne;
+            document.getElementById("numberOne").innerHTML = numberOne;     // returns a random integer from 0 to 9
+            document.getElementById("numberTwo").innerHTML = numberTwo;
+            document.getElementById("result").innerHTML = result;
+        }
+
+
+    </script>
+
+
+
+</body>
+
+</html>
